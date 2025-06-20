@@ -27,3 +27,10 @@ Lack of centralized access to patient records
 Inefficient appointment scheduling and communication    
 Gaps in continuity of care due to fragmented data     
 By integrating all major stakeholders into a single, responsive platform, DocVisitNow improves coordination, reduces administrative overhead, and enhances patient outcomes through better-informed medical decisions and faster interventions during critical situations.    
+
+## Author
+
+**Mahek Agrawal**     
+GitHub: https://github.com/mahekagrawal16      
+LinkedIn: https://linkedin.com/in/mahek-agrawal-503819255   
+Email: mahek.suresh,.aug2004@gmail.com    
