@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - System Reports</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      color: white;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .nav-group {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+<div class="sidebar shadow">
+  <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+  <h4 class="text-center mt-2">Admin Panel</h4>
+  <div class="nav-group">
+    <hr>
+    <a href="../admin.html">Dashboard</a>
+    <hr>
+    <a href="manageusers.html">Manage Users</a>
+    <hr>
+    <a href="managehospitals.html">Manage Hospitals</a>
+    <hr>
+    <a href="appointments.html">View Appointments</a>
+    <hr>
+    <a href="reports.html" class="active">System Reports</a>
+    <hr>
+    <a href="settings.html">Settings</a>
+    <hr>
+  </div>
+  <div class="nav-group">
+    <a href="../homepage.html" onclick="return confirmLogout()">Logout</a>
+  </div>
+</div>
+
+<div class="main-content">
+  <h2 class="mb-4">System Reports</h2>
+
+  <div class="card p-4 shadow mb-4">
+    <h5>Monthly Overview</h5>
+    <div class="row text-center">
+      <div class="col-md-4">
+        <h6>Total Appointments</h6>
+        <p class="fs-4">1,450</p>
+      </div>
+      <div class="col-md-4">
+        <h6>New Users</h6>
+        <p class="fs-4">320</p>
+      </div>
+      <div class="col-md-4">
+        <h6>System Uptime</h6>
+        <p class="fs-4">99.98%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-4 shadow mb-4">
+    <h5>User Activity Logs</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>User</th>
+          <th>Action</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody id="logTable">
+        <tr><td>1</td><td>John Doe</td><td>Booked appointment</td><td>2025-04-23 09:30</td></tr>
+        <tr><td>2</td><td>Jane Smith</td><td>Cancelled appointment</td><td>2025-04-22 14:10</td></tr>
+        <tr><td>3</td><td>Dr. Patel</td><td>Updated schedule</td><td>2025-04-22 10:45</td></tr>
+      </tbody>
+    </table>
+    <button class="btn btn-secondary" onclick="downloadLogs()">Download Logs</button>
+  </div>
+
+  <div class="card p-4 shadow">
+    <h5>Hospital Performance</h5>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Hospital</th>
+          <th>Appointments</th>
+          <th>Doctors</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>City Care</td><td>420</td><td>35</td><td>4.5</td></tr>
+        <tr><td>HealthPlus</td><td>320</td><td>25</td><td>4.2</td></tr>
+        <tr><td>MediHeal</td><td>290</td><td>30</td><td>4.3</td></tr>
+      </tbody>
+    </table>
+    <button class="btn btn-success" onclick="exportReport()">Export Report</button>
+  </div>
+</div>
+
+<script>
+  function downloadLogs() {
+    const csv = `ID,User,Action,Timestamp\n1,John Doe,Booked appointment,2025-04-23 09:30\n2,Jane Smith,Cancelled appointment,2025-04-22 14:10\n3,Dr. Patel,Updated schedule,2025-04-22 10:45`;
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'user_activity_logs.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function exportReport() {
+    const report = `Hospital,Appointments,Doctors,Rating\nCity Care,420,35,4.5\nHealthPlus,320,25,4.2\nMediHeal,290,30,4.3`;
+    const blob = new Blob([report], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'hospital_performance.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  function confirmLogout() {
+    return confirm('Are you sure you want to logout?');
+  }
+</script>
+
+</body>
+</html>

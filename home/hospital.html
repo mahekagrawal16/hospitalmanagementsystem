@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Dashboard - DocVisitNow</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    /* Sidebar Styling */
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100vh;  /* Ensure sidebar takes full height */
+      color: white;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+    
+    /* Main Content Styling */
+    .main-content {
+      margin-left: 270px;  /* Offset by sidebar width */
+      padding: 30px;
+      width: calc(100% - 270px);  /* Ensure content fills the remaining space */
+      background: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #003366;
+      color: white;
+    }
+    .card-body {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+
+    /* Statistics Cards */
+    .stats-card {
+      background-color: #6b737a;
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .stats-card h3 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    /* Table Styling */
+    table th, table td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 3rem;">🏥</h1>
+    <h4 class="text-center mt-2">Hospital Panel</h4>
+    
+    <div class="nav-group">
+      <hr>
+      <a href="hospital.html" class="active">Dashboard</a>
+      <hr>
+      <a href="../home/hospital/patients.html">Patient Management</a>
+      <hr>
+      <a href="../home/hospital/doctors.html">Manage Doctors</a>
+      <hr>
+      <a href="../home/hospital/appointments.html">Appointments</a>
+      <hr>
+      <a href="../home/hospital/settings.html">Settings</a>
+      <hr>
+    </div>
+    <div class="nav-group">
+      <a href="homepage.html" onclick="return confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h2>Welcome, City Hospital! 👋</h2>
+    <p>Here's an overview of your hospital's performance, ongoing tasks, and essential information.</p>
+
+    <!-- Dashboard Statistics -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="stats-card">
+          <h6>Upcoming Appointments</h6>
+          <h3>42</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card">
+          <h6>Total Doctors</h6>
+          <h3>18</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card">
+          <h6>Total Patients</h6>
+          <h3>500</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stats-card">
+          <h6>Emergency Cases</h6>
+          <h3>7</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Patient Management Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Patient Management</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Disease</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Registered Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kabir Shah</td>
+              <td>30</td>
+              <td>Flu</td>
+              <td>+91 987-654-3210</td>
+              <td>2025-04-20</td>
+            </tr>
+            <tr>
+              <td>Riya Jain</td>
+              <td>45</td>
+              <td>Pneumonia</td>
+              <td>+91 923-456-7890</td>
+              <td>2025-04-18</td>
+            </tr>
+            <!-- More patients here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Manage Doctors Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Manage Doctors</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Doctor Name</th>
+              <th scope="col">Specialization</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Email</th>
+              <th scope="col">Joining Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dr. Bhisthi</td>
+              <td>Cardiologist</td>
+              <td>+91 787-654-0000</td>
+              <td>dr.bhisthi@hospital.com</td>
+              <td>2020-01-15</td>
+            </tr>
+            <tr>
+              <td>Dr. Meera</td>
+              <td>Neurologist</td>
+              <td>+91 987-654-1234</td>
+              <td>dr.meera@hospital.com</td>
+              <td>2019-03-20</td>
+            </tr>
+            <!-- More doctors here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Admin Profile</h5>
+      </div>
+      <div class="card-body">
+        <form id="profileForm">
+          <div class="mb-3">
+            <label for="adminName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="adminName" value="Mahek Agrawal" required>
+          </div>
+          <div class="mb-3">
+            <label for="adminEmail" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="adminEmail" value="admin@hospital.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="adminContact" class="form-label">Contact Number</label>
+            <input type="tel" class="form-control" id="adminContact" value="+91 999-876-1652" required>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+<script>
+   function confirmLogout() {
+    return confirm('Are you sure you want to logout?');
+  }
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

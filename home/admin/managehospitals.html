@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Hospitals</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      color: white;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .nav-group {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .btn-primary {
+      background-color: #003366;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .table th{
+      background-color:  #003366;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+      <h4 class="text-center mt-2">Admin Panel</h4>
+  
+  <div class="nav-group">
+    <hr>
+    <a href="../admin.html">Dashboard</a>
+    <hr>
+    <a href="../admin/manageusers.html">Manage Users</a>
+    <hr>
+    <a href="managehospitals.html" class="active">Manage Hospitals</a>
+    <hr>
+    <a href="../admin/appointments.html">View Appointments</a>
+    <hr>
+    <a href="../admin/reports.html">System Reports</a>
+    <hr>
+    <a href="../admin/settings.html">Settings</a>
+    <hr>
+  </div>
+  <div class="nav-group">
+    <a href="../homepage.html" onclick="return confirmLogout()">Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Manage Hospitals</h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addHospitalModal">+ Add Hospital</button>
+  </div>
+
+  <div class="card shadow p-3">
+    <h5 class="mb-3">Registered Hospitals</h5>
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Hospital Name</th>
+          <th>City</th>
+          <th>Contact Email</th>
+          <th>Status</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="hospitalTable">
+        <!-- Sample Data -->
+        <tr>
+          <td>1</td>
+          <td>City Hospital</td>
+          <td>Mumbai</td>
+          <td>cityhosp@gmail.com</td>
+          <td><span class="badge bg-success">Approved</span></td>
+          <td>777-456-7890</td>
+          <td>
+            <button class="btn btn-sm btn-info" onclick="viewHospital(1, 'City Hospital', 'Mumbai', 'cityhosp@gmail.com', 'Approved', '777-456-7890')">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+          </td>
+        </tr>
+        </thead>
+        <tbody id="hospitalTable">
+          <!-- Sample Data -->
+          <tr>
+            <td>2</td>
+            <td>Sushine Hospital</td>
+            <td>Kolkata</td>
+            <td>sunshinehosp@gmail.com</td>
+            <td><span class="badge bg-warning">Pending</span></td>
+            <td>676-000-1111</td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewHospital(2, 'Sushine Hospital', 'Kolkata', 'sunshinehosp@gmail.com', 'Pending', '676-000-1111')">View</button>
+              <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+            </td>
+          </tr>
+        </thead>
+        <tbody id="hospitalTable">
+          <!-- Sample Data -->
+          <tr>
+            <td>3</td>
+            <td>Downtown Hospital</td>
+            <td>Delhi</td>
+            <td>dwontown@gmail.com</td>
+            <td><span class="badge bg-danger">Rejected</span></td>
+            <td>998-456-0101</td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewHospital(3, 'Downtown Hospital', 'Delhi', 'cityhosp@gmail.com', 'Rejected', '998-456-0101')">View</button>
+              <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+            </td>
+          </tr>
+        <!-- Add more dynamically -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Hospital Modal -->
+<div class="modal fade" id="addHospitalModal" tabindex="-1" aria-labelledby="addHospitalModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="hospitalForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add/Edit Hospital</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">
+            <label>Hospital Name</label>
+            <input type="text" class="form-control" id="hospName" required>
+          </div>
+          <div class="mb-2">
+            <label>City</label>
+            <input type="text" class="form-control" id="hospCity" required>
+          </div>
+          <div class="mb-2">
+            <label>Email</label>
+            <input type="email" class="form-control" id="hospEmail" required>
+          </div>
+          <div class="mb-2">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="hospPhone" required>
+          </div>
+          <div class="mb-2">
+            <label>Status</label>
+            <select class="form-select" id="hospStatus" required>
+              <option>Approved</option>
+              <option>Pending</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Add/Update Hospital</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- View Hospital Modal -->
+<div class="modal fade" id="viewHospitalModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hospital Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="hospitalDetails"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let editingRow = null; // To store the row being edited
+
+  // Add/Edit hospital functionality
+  document.getElementById("hospitalForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("hospName").value;
+    const city = document.getElementById("hospCity").value;
+    const email = document.getElementById("hospEmail").value;
+    const phone = document.getElementById("hospPhone").value;
+    const status = document.getElementById("hospStatus").value;
+
+    const table = document.getElementById("hospitalTable");
+
+    if (editingRow) {
+      // Update existing row (editing)
+      const cells = editingRow.getElementsByTagName('td');
+      cells[1].innerText = name;
+      cells[2].innerText = city;
+      cells[3].innerText = email;
+      cells[4].innerHTML = `<span class="badge bg-${status === 'Approved' ? 'success' : status === 'Pending' ? 'warning' : 'danger'}">${status}</span>`;
+      cells[5].innerText = phone;
+      editingRow = null;
+    } else {
+      // Add new row
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td>${table.rows.length}</td>
+        <td>${name}</td>
+        <td>${city}</td>
+        <td>${email}</td>
+        <td><span class="badge bg-${status === 'Approved' ? 'success' : status === 'Pending' ? 'warning' : 'danger'}">${status}</span></td>
+        <td>${phone}</td>
+        <td>
+          <button class="btn btn-sm btn-info" onclick="viewHospital('${table.rows.length}', '${name}', '${city}', '${email}', '${status}', '${phone}')">View</button>
+          <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+          <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+        </td>
+      `;
+    }
+
+    document.getElementById("hospitalForm").reset();
+    const modal = bootstrap.Modal.getInstance(document.getElementById("addHospitalModal"));
+    modal.hide();
+  });
+
+  // View hospital
+  function viewHospital(id, name, city, email, status, phone) {
+    document.getElementById("hospitalDetails").innerHTML = `
+      <p><strong>Hospital Name:</strong> ${name}</p>
+      <p><strong>City:</strong> ${city}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Status:</strong> ${status}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+    `;
+    new bootstrap.Modal(document.getElementById("viewHospitalModal")).show();
+  }
+
+  // Delete hospital
+  function deleteHospital(btn) {
+    if (confirm("Are you sure you want to delete this hospital?")) {
+      const row = btn.closest("tr");
+      row.remove();
+    }
+  }
+
+  // Edit hospital
+  function editHospital(btn) {
+    const row = btn.closest("tr");
+    const cells = row.querySelectorAll("td");
+    const name = cells[1].innerText;
+    const city = cells[2].innerText;
+    const email = cells[3].innerText;
+    const status = cells[4].innerText.trim();
+    const phone = cells[5].innerText;
+
+    document.getElementById("hospName").value = name;
+    document.getElementById("hospCity").value = city;
+    document.getElementById("hospEmail").value = email;
+    document.getElementById("hospPhone").value = phone;
+    document.getElementById("hospStatus").value = status;
+
+    const modal = new bootstrap.Modal(document.getElementById("addHospitalModal"));
+    modal.show();
+
+    editingRow = row; // Store the row being edited
+  }
+  function confirmLogout() {
+    return confirm('Are you sure you want to logout?');
+  }
+</script>
+
+</body>
+</html>

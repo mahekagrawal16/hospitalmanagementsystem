@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - DocVisitNow</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      color: white;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .nav-group {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+    <h4 class="text-center mt-2">Admin Panel</h4>
+    
+    <div class="nav-group">
+      <hr>
+      <a href="admin.html" class="active">Dashboard</a>
+      <hr>
+      <a href="../home/admin/manageusers.html">Manage Users</a>
+      <hr>
+      <a href="../home/admin/managehospitals.html">Manage Hospitals</a>
+      <hr>
+      <a href="../home/admin/appointments.html">View Appointments</a>
+      <hr>
+      <a href="../home/admin/reports.html">System Reports</a>
+      <hr>
+      <a href="../home/admin/settings.html">Settings</a>
+      <hr>
+    </div>
+    <div class="nav-group">
+      <a href="homepage.html" onclick="return confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h2>Welcome, Admin 👋</h2>
+    <p>Here’s an overview of system activity and controls.</p>
+
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="card bg-primary text-white shadow p-3">
+          <h6>Total Users</h6>
+          <h3>1,250</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white shadow p-3">
+          <h6>Total Appointments</h6>
+          <h3>4,300</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-dark shadow p-3">
+          <h6>Hospitals Registered</h6>
+          <h3>58</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-danger text-white shadow p-3">
+          <h6>Pending Approvals</h6>
+          <h3>7</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow p-4 mt-4">
+      <h5>Recent Activity</h5>
+      <ul class="list-group mt-2">
+        <li class="list-group-item">New user registered - Apr 23, 2025</li>
+        <li class="list-group-item">Hospital approved - Apr 22, 2025</li>
+        <li class="list-group-item">Doctor updated profile - Apr 21, 2025</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar a');
+      const currentPage = window.location.pathname.split("/").pop();
+      links.forEach(link => {
+        const linkPage = link.getAttribute('href').split("/").pop();
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    });
+    function confirmLogout() {
+    return confirm('Are you sure you want to logout?');
+  }
+  </script>
+</body>
+</html>

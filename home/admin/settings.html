@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      color: white;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .nav-group {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+      <h4 class="text-center mt-2">Admin Panel</h4>
+  
+  <div class="nav-group">
+    <hr>
+    <a href="../admin.html">Dashboard</a>
+    <hr>
+    <a href="../admin/manageusers.html">Manage Users</a>
+    <hr>
+    <a href="../admin/managehospitals.html">Manage Hospitals</a>
+    <hr>
+    <a href="../admin/appointments.html">View Appointments</a>
+    <hr>
+    <a href="../admin/reports.html">System Reports</a>
+    <hr>
+    <a href="../admin/settings.html" class="active">Settings</a>
+    <hr>
+  </div>
+  <div class="nav-group">
+    <a href="../homepage.html" onclick="return confirmLogout()">Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <h2>Settings</h2>
+
+  <div class="card shadow p-4 mb-4">
+    <h5 class="mb-3">System Configuration</h5>
+    <form id="systemConfigForm">
+      <div class="mb-3">
+        <label for="siteName" class="form-label">Site Name</label>
+        <input type="text" class="form-control" id="siteName" value="DocVisitNow" required>
+        <div class="invalid-feedback" id="siteNameError">Site Name is required.</div>
+      </div>
+      <div class="mb-3">
+        <label for="siteEmail" class="form-label">Site Email</label>
+        <input type="email" class="form-control" id="siteEmail" value="contact@docvisitnow.com" required>
+        <div class="invalid-feedback" id="siteEmailError">Please enter a valid email address.</div>
+      </div>
+      <div class="mb-3">
+        <label for="timezone" class="form-label">Timezone</label>
+        <select class="form-select" id="timezone" required>
+          <option value="UTC" selected>UTC</option>
+          <option value="IST">Indian Standard Time (IST)</option>
+          <option value="GMT">Greenwich Mean Time (GMT)</option>
+        </select>
+        <div class="invalid-feedback" id="timezoneError">Please select a valid timezone.</div>
+      </div>
+      <div class="mb-3">
+        <label for="siteStatus" class="form-label">Site Status</label>
+        <select class="form-select" id="siteStatus" required>
+          <option value="active" selected>Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+        <div class="invalid-feedback" id="siteStatusError">Please select a site status.</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+  <div class="card shadow p-4 mb-4">
+    <h5 class="mb-3">Hospital Management Settings</h5>
+    <form id="hospitalManagementForm">
+      <div class="mb-3">
+        <label for="hospitalApproval" class="form-label">Hospital Approval</label>
+        <select class="form-select" id="hospitalApproval" required>
+          <option value="manual" selected>Manual Approval</option>
+          <option value="automatic">Automatic Approval</option>
+        </select>
+        <div class="invalid-feedback" id="hospitalApprovalError">Please select an approval method.</div>
+      </div>
+      <div class="mb-3">
+        <label for="maxHospitalCapacity" class="form-label">Maximum Hospital Capacity</label>
+        <input type="number" class="form-control" id="maxHospitalCapacity" value="500" required>
+        <div class="invalid-feedback" id="maxHospitalCapacityError">Please enter a valid hospital capacity.</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+  <div class="card shadow p-4 mb-4">
+    <h5 class="mb-3">User Preferences</h5>
+    <form id="userPreferencesForm">
+      <div class="mb-3">
+        <label for="notifications" class="form-label">Enable Notifications</label>
+        <select class="form-select" id="notifications" required>
+          <option value="enabled" selected>Enabled</option>
+          <option value="disabled">Disabled</option>
+        </select>
+        <div class="invalid-feedback" id="notificationsError">Please select notification preference.</div>
+      </div>
+      <div class="mb-3">
+        <label for="userRoles" class="form-label">Default User Role</label>
+        <select class="form-select" id="userRoles" required>
+          <option value="patient" selected>Patient</option>
+          <option value="doctor">Doctor</option>
+          <option value="admin">Admin</option>
+        </select>
+        <div class="invalid-feedback" id="userRolesError">Please select a default user role.</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+  <div class="card shadow p-4 mb-4">
+    <h5 class="mb-3">Security Settings</h5>
+    <form id="securitySettingsForm">
+      <div class="mb-3">
+        <label for="passwordPolicy" class="form-label">Password Policy</label>
+        <select class="form-select" id="passwordPolicy" required>
+          <option value="strong" selected>Strong (At least 8 characters, 1 number, 1 special character)</option>
+          <option value="medium">Medium (At least 6 characters)</option>
+          <option value="weak">Weak (No specific requirements)</option>
+        </select>
+        <div class="invalid-feedback" id="passwordPolicyError">Please select a password policy.</div>
+      </div>
+      <div class="mb-3">
+        <label for="twoFactorAuth" class="form-label">Enable Two-Factor Authentication</label>
+        <select class="form-select" id="twoFactorAuth" required>
+          <option value="enabled" selected>Enabled</option>
+          <option value="disabled">Disabled</option>
+        </select>
+        <div class="invalid-feedback" id="twoFactorAuthError">Please select an option for 2FA.</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    // Generic validation function
+    function validateForm(formId) {
+      const form = document.getElementById(formId);
+      let isValid = true;
+  
+      Array.from(form.elements).forEach((field) => {
+        if (field.required && !field.value.trim()) {
+          isValid = false;
+          document.getElementById(field.id + 'Error').style.display = 'block';
+          field.classList.add('is-invalid');
+        } else {
+          const errorEl = document.getElementById(field.id + 'Error');
+          if (errorEl) errorEl.style.display = 'none';
+          field.classList.remove('is-invalid');
+        }
+      });
+  
+      return isValid;
+    }
+  
+    // Form submission handler
+    function handleFormSubmission(formId, message) {
+      document.getElementById(formId).addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateForm(formId)) {
+          // Collect form data (for demo purpose, log to console)
+          const formData = new FormData(this);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+          console.log(`${message}`, data);
+          alert(`${message}`);
+        }
+      });
+    }
+  
+    // Initialize all forms
+    handleFormSubmission('systemConfigForm', 'System Configuration saved!');
+    handleFormSubmission('hospitalManagementForm', 'Hospital Management Settings saved!');
+    handleFormSubmission('userPreferencesForm', 'User Preferences saved!');
+    handleFormSubmission('securitySettingsForm', 'Security Settings saved!');
+    function confirmLogout() {
+    return confirm('Are you sure you want to logout?');
+  }
+  </script>
+  
+
+</body>
+</html>
