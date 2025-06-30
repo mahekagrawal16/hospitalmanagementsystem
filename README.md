@@ -6,15 +6,20 @@ A key innovation in DocVisitNow is its *Emergency Biometric Scanner*, which assi
 Key Features
 
 Role-Based Dashboards     
-Separate and secure dashboards for Patients, Doctors, Hospitals, and Admins, each with customized access and features.    
+Separate and secure dashboards for Patients, Doctors, Hospitals, and Admins, each with customized access and features. 
+
 Appointment Scheduling and Management    
-Patients can easily book appointments with doctors, and hospitals can manage availability and schedules in real time.    
+Patients can easily book appointments with doctors, and hospitals can manage availability and schedules in real time.   
+
 Medical History and Prescription Tracking    
-Patients have access to their consultation history and prescribed medications. Doctors can update records and issue follow-up instructions.     
+Patients have access to their consultation history and prescribed medications. Doctors can update records and issue follow-up instructions. 
+
 Emergency Biometric Scanner     
-An integrated biometric recognition system that identifies patients in emergencies (e.g., road accidents), retrieves their medical profiles, and contacts registered emergency contacts. This feature significantly reduces response time and facilitates faster medical intervention.     
+An integrated biometric recognition system that identifies patients in emergencies (e.g., road accidents), retrieves their medical profiles, and contacts registered emergency contacts. This feature significantly reduces response time and facilitates faster medical intervention.  
+
 Secure Authentication System     
-Enforces secure, role-specific login access to maintain confidentiality and ensure data protection.   
+Enforces secure, role-specific login access to maintain confidentiality and ensure data protection.  
+
 Administrative Controls   
 Admins can manage system users, oversee hospital operations, and maintain data integrity across the platform.   
 
