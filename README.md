@@ -21,17 +21,7 @@ Secure Authentication System
 Enforces secure, role-specific login access to maintain confidentiality and ensure data protection.  
 
 Administrative Controls   
-Admins can manage system users, oversee hospital operations, and maintain data integrity across the platform.   
-
-Usefulness and Impact    
-
-DocVisitNow addresses key challenges in the healthcare domain, including:    
-
-Delays in emergency identification and treatment    
-Lack of centralized access to patient records     
-Inefficient appointment scheduling and communication    
-Gaps in continuity of care due to fragmented data     
-By integrating all major stakeholders into a single, responsive platform, DocVisitNow improves coordination, reduces administrative overhead, and enhances patient outcomes through better-informed medical decisions and faster interventions during critical situations.    
+Admins can manage system users, oversee hospital operations, and maintain data integrity across the platform.      
 
 ## 🖼️ Screenshots
 
@@ -55,6 +45,15 @@ By integrating all major stakeholders into a single, responsive platform, DocVis
 ![Scanner](./assets/emergency-scanner.png)
 
 ---
+Usefulness and Impact    
+
+DocVisitNow addresses key challenges in the healthcare domain, including:    
+
+Delays in emergency identification and treatment    
+Lack of centralized access to patient records     
+Inefficient appointment scheduling and communication    
+Gaps in continuity of care due to fragmented data     
+By integrating all major stakeholders into a single, responsive platform, DocVisitNow improves coordination, reduces administrative overhead, and enhances patient outcomes through better-informed medical decisions and faster interventions during critical situations. 
 
 ## Author
 
