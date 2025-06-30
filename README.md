@@ -33,6 +33,29 @@ Inefficient appointment scheduling and communication
 Gaps in continuity of care due to fragmented data     
 By integrating all major stakeholders into a single, responsive platform, DocVisitNow improves coordination, reduces administrative overhead, and enhances patient outcomes through better-informed medical decisions and faster interventions during critical situations.    
 
+## 🖼️ Screenshots
+
+### Homepage
+![Homepage](./assets/homepage1.png)
+![Homepage](./assets/homepage2.png)
+
+### Patient Dashboard
+![Patient Dashboard](./assets/patient-dashboard.png)
+
+### Doctor Dashboard
+![Doctor Dashboard](./assets/doctor-dashboard.png)
+
+### Hospital Dashboard
+![Hospital Dashboard](./assets/hospital-dashboard.png)
+
+### Admin Dashboard
+![Admin Dashboard](./assets/admin-dashboard.png)
+
+### Emergency Face Scanner
+![Scanner](./assets/emergency-scanner.png)
+
+---
+
 ## Author
 
 **Mahek Agrawal**     
