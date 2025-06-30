@@ -1,0 +1,16 @@
+.main-content {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+    }
+    table th, table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .btn-action {
+      margin: 0 5px;
+    }
+
+    .badge {
+      font-size: 0.9rem;
+    }

@@ -1,0 +1,21 @@
+
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .btn-primary {
+      background-color: #003366;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .table th{
+      background-color:  #003366;
+    }

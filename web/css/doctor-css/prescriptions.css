@@ -1,0 +1,20 @@
+
+    .card {
+      background-color: #eaf4fc;
+    }
+    .btn-primary {
+      background-color:#003366;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+    .table th {
+      background-color:   #003366;
+      color: white;
+    }
+
+    .modal-content {
+      width: 100%;
+    }

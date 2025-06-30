@@ -1,0 +1,23 @@
+.card-body {
+      background-color: #ffffff;
+      padding: 20px;
+    }
+
+    /* Statistics Cards */
+    .stats-card {
+      background-color: #6b737a;
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .stats-card h3 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+
+    /* Table Styling */
+    table th, table td {
+      text-align: center;
+    }

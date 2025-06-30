@@ -1,0 +1,12 @@
+    .table td, .table th {
+      text-align: center;
+    }
+
+    .btn {
+      margin: 2px;
+    }
+
+    /* Ensure the schedule table stays within the main content area */
+    .main-content .card-body {
+      overflow-x: auto;
+    }

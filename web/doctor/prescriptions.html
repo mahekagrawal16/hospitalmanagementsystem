@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prescriptions - Doctor Panel | DocVisitNow</title>
+          <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+          <link rel="stylesheet" href="../css/doctor-css/common.css">
+          <link rel="stylesheet" href="../css/doctor-css/prescriptions.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar shadow">
+  <h1 class="text-center mb-0 mt-3" style="font-size: 3rem;">👨‍⚕️</h1>
+  <h4 class="text-center mt-2">Doctor Panel</h4>
+  <div class="nav-group">
+    <hr>
+    <a href="dashboard.html">Dashboard</a>
+    <hr>
+    <a href="appointments.html">Appointments</a>
+    <hr>
+    <a href="patientrecords.html">Patient Records</a>
+    <hr>
+    <a href="prescriptions.html" class="active">Prescriptions</a>
+    <hr>
+    <a href="profile-settings.html">Settings</a>
+    <hr>
+  </div>
+  <div class="nav-group">
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <h2>Prescriptions</h2>
+  <p>Manage all issued prescriptions and create new ones.</p>
+
+  <div class="mb-3 text-end">
+    <button class="btn btn-primary" onclick="openPrescriptionModal()">➕ Add Prescription</button>
+  </div>
+
+  <div class="card p-3">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Patient Name</th>
+          <th>Medicine</th>
+          <th>Dosage</th>
+          <th>Frequency</th>
+          <th>Notes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="prescriptionTable">
+        <tr data-nextvisit="Next Month" data-modified="April 24, 2025, 10:30 AM">
+          <td>Ritika Sharma</td>
+          <td>Paracetamol</td>
+          <td>500mg</td>
+          <td>Twice a day</td>
+          <td>After meals</td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="viewPrescription(this)">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editPrescription(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deletePrescription(this)">Delete</button>
+          </td>
+        </tr>
+        <tr data-nextvisit="In 1-2 weeks" data-modified="April 22, 2025, 3:15 PM">
+          <td>Arjun Mehta</td>
+          <td>Amoxicillin</td>
+          <td>250mg</td>
+          <td>Three times a day</td>
+          <td>Take with water</td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="viewPrescription(this)">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editPrescription(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deletePrescription(this)">Delete</button>
+          </td>
+        </tr>
+        <tr data-nextvisit="Next week" data-modified="April 23, 2025, 9:00 AM">
+          <td>Meera Joshi</td>
+          <td>Ibuprofen</td>
+          <td>400mg</td>
+          <td>Once a day</td>
+          <td>After breakfast</td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="viewPrescription(this)">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editPrescription(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deletePrescription(this)">Delete</button>
+          </td>
+        </tr>
+        <tr data-nextvisit="After a month" data-modified="April 21, 2025, 5:45 PM">
+          <td>Tanmay Kulkarni</td>
+          <td>Azithromycin</td>
+          <td>500mg</td>
+          <td>Once daily</td>
+          <td>With or without food</td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="viewPrescription(this)">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editPrescription(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deletePrescription(this)">Delete</button>
+          </td>
+        </tr>
+        <tr data-nextvisit="Upcoming Saturday" data-modified="April 24, 2025, 12:20 PM">
+          <td>Anjali Verma</td>
+          <td>Metformin</td>
+          <td>850mg</td>
+          <td>Twice daily</td>
+          <td>Monitor blood sugar regularly</td>
+          <td>
+            <button class="btn btn-sm btn-success" onclick="viewPrescription(this)">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editPrescription(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deletePrescription(this)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- View Modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewModalLabel">Prescription Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="viewModalBody">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prescription Modal -->
+<div class="modal fade" id="prescriptionModal" tabindex="-1" aria-labelledby="prescriptionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="prescriptionModalLabel">New Prescription</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="prescriptionForm">
+          <div class="mb-3">
+            <label for="patientName" class="form-label">Patient Name</label>
+            <input type="text" class="form-control" id="patientName" required>
+          </div>
+          <div class="mb-3">
+            <label for="medicine" class="form-label">Medicine</label>
+            <input type="text" class="form-control" id="medicine" required>
+          </div>
+          <div class="mb-3">
+            <label for="dosage" class="form-label">Dosage</label>
+            <input type="text" class="form-control" id="dosage" required>
+          </div>
+          <div class="mb-3">
+            <label for="frequency" class="form-label">Frequency</label>
+            <input type="text" class="form-control" id="frequency" required>
+          </div>
+          <div class="mb-3">
+            <label for="notes" class="form-label">Additional Notes</label>
+            <textarea class="form-control" id="notes"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="nextVisit" class="form-label">Next Visit</label>
+            <input type="text" class="form-control" id="nextVisit" placeholder="e.g., May 10, 2025" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="saveBtn">Save Prescription</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/doctor-js/prescriptions.js"></script>
+</body>
+</html>

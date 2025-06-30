@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments - Doctor Panel | DocVisitNow</title>
+  <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/doctor-css/appointment.css">
+  <link rel="stylesheet" href="../css/doctor-css/common.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 3rem;">👨‍⚕️</h1>
+    <h4 class="text-center mt-2">Doctor Panel</h4>
+    <div class="nav-group">
+      <hr>
+      <a href="dashboard.html">Dashboard</a>
+      <hr>
+      <a href="appointments.html" class="active">Appointments</a>
+      <hr>
+      <a href="patientrecords.html">Patient Records</a>
+      <hr>
+      <a href="prescriptions.html">Prescriptions</a>
+      <hr>
+      <a href="profile-settings.html">Settings</a>
+      <hr>
+    </div>
+    <div class="nav-group">
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h2>Appointments</h2>
+    <p>Manage and view your upcoming and past appointments.</p>
+
+    <!-- Search and Filter -->
+    <div class="row search-filter">
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search by patient name, ID or date...">
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" id="statusFilter">
+          <option selected>Filter by status</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary w-100" onclick="applyFilter()">Apply Filter</button>
+      </div>
+    </div>
+
+    <!-- Appointments Table -->
+    <div class="card p-3">
+      <table class="table table-hover" id="appointmentsTable">
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Date & Time</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-id="1" data-status="upcoming">
+            <td>Ritika Sharma</td>
+            <td>April 25, 2025 | 10:30 AM</td>
+            <td>Routine Checkup</td>
+            <td><span class="badge bg-primary status-badge">Upcoming</span></td>
+            <td>
+              <button class="btn btn-sm btn-success" onclick="viewAppointment(1)">View</button>
+              <button class="btn btn-sm btn-danger" onclick="cancelAppointment(1)">Cancel</button>
+            </td>
+          </tr>
+          <tr data-id="2" data-status="completed">
+            <td>Aman Verma</td>
+            <td>April 23, 2025 | 02:00 PM</td>
+            <td>Chest Pain</td>
+            <td><span class="badge bg-success status-badge">Completed</span></td>
+            <td>
+              <button class="btn btn-sm btn-secondary" onclick="viewAppointment(2)">View</button>
+            </td>
+          </tr>
+          <tr data-id="3" data-status="cancelled">
+            <td>Neha Joshi</td>
+            <td>April 22, 2025 | 09:15 AM</td>
+            <td>Follow-up</td>
+            <td><span class="badge bg-danger status-badge">Cancelled</span></td>
+            <td>
+              <button class="btn btn-sm btn-secondary" onclick="viewAppointment(3)">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- View Appointment Modal -->
+  <div class="modal fade" id="viewAppointmentModal" tabindex="-1" aria-labelledby="viewAppointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewAppointmentModalLabel">Appointment Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="appointmentDetails"></div>
+
+        <!-- Reschedule Form -->
+        <div class="modal-body" id="rescheduleForm" style="display: none;">
+          <div class="mb-3">
+            <label for="newDateTime" class="form-label">Select New Date & Time</label>
+            <input type="datetime-local" class="form-control" id="newDateTime">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-info" id="rescheduleBtn" onclick="showRescheduleForm()">Reschedule</button>
+          <button type="button" class="btn btn-success" id="saveRescheduleBtn" onclick="saveRescheduledDate()" style="display: none;">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/doctor-js/appointment.js"></script>
+</body>
+</html>

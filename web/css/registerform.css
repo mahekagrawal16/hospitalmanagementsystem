@@ -1,0 +1,139 @@
+body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 60%;
+        margin: 40px auto;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+        padding: 7px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-bottom: 30px;
+        background-color: rgb(201, 222, 228);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      label {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      input,
+      select,
+      textarea {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        /* width: 100%; */
+      }
+      .gender-row {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-top: 5px;
+      }
+
+      .gender-row label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: normal;
+      }
+     .checkbox-row-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.checkbox-inline {
+  display: inline-flex;  /* This ensures the checkbox + text stay on one line */
+  align-items: center;
+  font-size: 15px;
+  font-weight: normal;
+  color: #333;
+  gap: 8px;
+}
+
+
+.checkbox-inline input[type="checkbox"] {
+  margin: 0;
+}
+
+.checkbox-inline a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.checkbox-inline a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+.content-section {
+      padding: 40px 20px;
+    }
+    .modal-body {
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+
+      textarea {
+        resize: vertical;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 30px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 200px;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .role-specific {
+        display: none;
+      }
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .form-row input,
+      .form-row select {
+        width: 48%;
+      }
+      .form-column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .file-upload {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }

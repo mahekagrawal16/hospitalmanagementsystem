@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Users</title>
+  <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/admin-css/common.css"/>
+  <link rel="stylesheet" href="../css/admin-css/users.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+    <h4 class="text-center mt-2">Admin Panel</h4>
+    
+    <div class="nav-group">
+      <hr>
+      <a href="dashboard.html">Dashboard</a>
+      <hr>
+      <a href="manageusers.html" class="active">Manage Users</a>
+      <hr>
+      <a href="managehospitals.html">Manage Hospitals</a>
+      <hr>
+      <a href="appointments.html">View Appointments</a>
+      <hr>
+      <a href="reports.html">System Reports</a>
+      <hr>
+      <a href="settings.html">Settings</a>
+      <hr>
+    </div>
+    <div class="nav-group">
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+<div class="main-content">
+  <h2 class="mb-4">Manage Users</h2>
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card shadow p-3">
+        <h5>Patients</h5>
+        <table class="table table-striped">
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Jane Shah</td>
+              <td>jane@gmail.com</td>
+              <td>9876543210</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#patientModal" onclick="viewPatient(1)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePatientByName('Jane Shah')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sushi Kaur</td>
+              <td>sushi@gmail.com</td>
+              <td>9876543220</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#patientModal" onclick="viewPatient(2)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePatientByName('Sushi Kaur')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Hirak Pandey</td>
+              <td>hirak@gmail.com</td>
+              <td>9876543230</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#patientModal" onclick="viewPatient(3)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePatientByName('Hirak Pandey')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Jiya Pardeshi</td>
+              <td>jiya@gmail.com</td>
+              <td>9876543240</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#patientModal" onclick="viewPatient(4)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deletePatientByName('Jiya Pardeshi')">Delete</button>
+              </td>
+            </tr>
+            <!-- More patient rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <div class="card shadow p-3">
+        <h5>Doctors</h5>
+        <table class="table table-striped">
+          <thead class="table-success">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Specialization</th>
+              <th>Email</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Dr. A Sharma</td>
+              <td>Cardiologist</td>
+              <td>docsharma@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#doctorModal" onclick="viewDoctor(1)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteDoctorByName('Dr. A Sharma')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Dr. R Gupta</td>
+              <td>Neurologist</td>
+              <td>docgupta@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#doctorModal" onclick="viewDoctor(2)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteDoctorByName('Dr. R Gupta')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Dr. M Patel</td>
+              <td>Orthopedist</td>
+              <td>docpatel@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#doctorModal" onclick="viewDoctor(3)">View</button>
+                <button class="btn btn-sm btn-danger" oonclick="deleteDoctorByName('Dr. M Patel')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Dr. S Jain</td>
+              <td>Dermatologist</td>
+              <td>docjain@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#doctorModal" onclick="viewDoctor(4)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteDoctorByName('Dr. S Jain')">Delete</button>
+              </td>
+            </tr>
+            <!-- More doctor rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-12 mb-4">
+      <div class="card shadow p-3">
+        <h5>Hospitals</h5>
+        <table class="table table-striped">
+          <thead class="table-warning">
+            <tr>
+              <th>#</th>
+              <th>Hospital Name</th>
+              <th>City</th>
+              <th>Contact</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>City Hospital</td>
+              <td>Mumbai</td>
+              <td>cityhosp@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#hospitalModal" onclick="viewHospital(1)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteHospitalByName('City Hospital')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>LifeCare Hospital</td>
+              <td>Delhi</td>
+              <td>lifecare@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#hospitalModal" onclick="viewHospital(2)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteHospitalByName('LifeCare Hospital')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>StarMed Hospital</td>
+              <td>Chennai</td>
+              <td>starmed@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#hospitalModal" onclick="viewHospital(3)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteHospitalByName('StarMed Hospital')">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Sunshine Hospital</td>
+              <td>Kolkata</td>
+              <td>sunshinehosp@gmail.com</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#hospitalModal" onclick="viewHospital(4)">View</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteHospitalByName('Sunshine Hospital')">Delete</button>
+              </td>
+            </tr>
+            <!-- More hospital rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Patient Details Modal -->
+<div class="modal fade" id="patientModal" tabindex="-1" aria-labelledby="patientModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="patientModalLabel">Patient Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Name: <span id="patientName">N/A</span></h5>
+          <p>Email: <span id="patientEmail">N/A</span></p>
+          <p>Phone: <span id="patientPhone">N/A</span></p>
+          <p>Address: <span id="patientAddress">N/A</span></p>
+          <p>Date of Birth: <span id="patientDob">N/A</span></p>
+          <p>Gender: <span id="patientGender">N/A</span></p>
+          <p>Conditions: <span id="patientConditions">N/A</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Doctor Details Modal -->
+<div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="doctorModalLabel">Doctor Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Name: <span id="doctorName">N/A</span></h5>
+          <p>Email: <span id="doctorEmail">N/A</span></p>
+          <p>Specialization: <span id="doctorSpecialization">N/A</span></p>
+          <p>Experience: <span id="doctorExperience">N/A</span></p>
+          <p>Education: <span id="doctorEducation">N/A</span></p>
+          <p>Hospital: <span id="doctorHospital">N/A</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Hospital Details Modal -->
+<div class="modal fade" id="hospitalModal" tabindex="-1" aria-labelledby="hospitalModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="hospitalModalLabel">Hospital Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Hospital Name: <span id="hospitalName">N/A</span></h5>
+          <p>City: <span id="hospitalCity">N/A</span></p>
+          <p>Contact: <span id="hospitalContact">N/A</span></p>
+          <p>Address: <span id="hospitalAddress">N/A</span></p>
+          <p>Rating: <span id="hospitalRating">N/A</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/admin-js/users.js"></script>
+</body>
+</html>

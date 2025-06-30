@@ -1,0 +1,19 @@
+
+    .table th{
+      background-color: #003366;
+    }
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+    }
+    .hospital-filter {
+      width: 200px;
+    }
+    .appointment-status {
+      width: 120px;
+    }

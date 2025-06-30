@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - Hospital Dashboard</title>
+  <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/hospital-css/common.css"/>
+  <link rel="stylesheet" href="../css/hospital-css/settings.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 3rem;">🏥</h1>
+    <h4 class="text-center mt-2">Hospital Panel</h4>
+    
+    <div class="nav-group">
+      <hr>
+      <a href="dashboard.html">Dashboard</a>
+      <hr>
+      <a href="patients.html">Patient Management</a>
+      <hr>
+      <a href="doctors.html">Manage Doctors</a>
+      <hr>
+      <a href="appointments.html">Appointments</a>
+      <hr>
+      <a href="settings.html" class="active">Settings</a>
+      <hr>
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content" style="margin-left: 270px; padding: 30px;">
+    <h2>Hospital Settings</h2>
+    <p>Manage your hospital's settings and configurations.</p>
+
+    <!-- Hospital Logo and Type -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Hospital Logo & Type</h5>
+      </div>
+      <div class="card-body">
+        <form id="logo-type-form" onsubmit="return saveLogoType();">
+          <div class="mb-3">
+            <label class="form-label">Hospital Logo</label>
+            <input type="file" id="hospital-logo" class="form-control" accept="image/*" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hospital Type</label>
+            <select id="hospital-type" class="form-select" required>
+              <option value="General" selected>General Hospital</option>
+              <option value="Specialty">Specialty</option>
+              <option value="Clinic">Clinic</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Logo & Type</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Hospital General Information -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>General Hospital Information</h5>
+      </div>
+      <div class="card-body">
+        <form id="hospital-info-form" onsubmit="return saveHospitalInfo();">
+          <div class="mb-3">
+            <label class="form-label">Hospital Name</label>
+            <input type="text" id="hospital-name" class="form-control" value="City Hospital" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hospital Address</label>
+            <input type="text" id="hospital-address" class="form-control" value="123, MG Road, Mumbai" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contact Email</label>
+            <input type="email" id="hospital-email" class="form-control" value="admin@hospital.com" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" id="hospital-phone" class="form-control" value="+91 999-876-1652" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Information</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Admin Settings -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Admin Settings</h5>
+      </div>
+      <div class="card-body">
+        <form id="admin-info-form" onsubmit="return saveAdminInfo();">
+          <div class="mb-3">
+            <label class="form-label">Admin Name</label>
+            <input type="text" id="admin-name" class="form-control" value="Mahek Agrawal" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Admin Contact Number</label>
+            <input type="tel" id="admin-phone" class="form-control" value="+91 999-876-1652" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Admin Email Address</label>
+            <input type="email" id="admin-email" class="form-control" value="admin@hospital.com" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Change Password</label>
+            <input type="password" id="admin-password" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Admin Info</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Security Settings -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Security Settings</h5>
+      </div>
+      <div class="card-body">
+        <form id="security-settings-form" onsubmit="return saveSecuritySettings();">
+          <div class="mb-3">
+            <label class="form-label">Enable Two-Factor Authentication</label>
+            <input type="checkbox" id="enable-2fa" class="form-check-input">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">IP Address Restriction</label>
+            <input type="text" id="ip-restriction" class="form-control" placeholder="Enter IPs, comma separated" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Audit Log Settings</label>
+            <select id="audit-log" class="form-select" required>
+              <option value="enabled" selected>Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Save Security Settings</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Download Hospital Report -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>Download Hospital Report</h5>
+      </div>
+      <div class="card-body">
+        <button class="btn btn-success" onclick="generateReport()">Download Report</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/hospital-js/settings.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+</html>

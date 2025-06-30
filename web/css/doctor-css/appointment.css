@@ -1,0 +1,25 @@
+.btn-primary {
+      background-color: #003366;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #00509e;
+    }
+
+    .search-filter {
+      margin-bottom: 20px;
+    }
+
+    .table th {
+      background-color: #003366;
+      color: white;
+    }
+
+    .status-badge {
+      font-size: 0.85rem;
+    }
+
+    .modal-content {
+      width: 100%;
+    }

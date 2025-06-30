@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Hospitals</title>
+  <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/admin-css/common.css"/>
+  <link rel="stylesheet" href="../css/admin-css/hospitals.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+      <h4 class="text-center mt-2">Admin Panel</h4>
+  
+  <div class="nav-group">
+    <hr>
+    <a href="dashboard.html">Dashboard</a>
+    <hr>
+    <a href="manageusers.html">Manage Users</a>
+    <hr>
+    <a href="managehospitals.html" class="active">Manage Hospitals</a>
+    <hr>
+    <a href="appointments.html">View Appointments</a>
+    <hr>
+    <a href="reports.html">System Reports</a>
+    <hr>
+    <a href="settings.html">Settings</a>
+    <hr>
+  </div>
+  <div class="nav-group">
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Manage Hospitals</h2>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addHospitalModal">+ Add Hospital</button>
+  </div>
+
+  <div class="card shadow p-3">
+    <h5 class="mb-3">Registered Hospitals</h5>
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Hospital Name</th>
+          <th>City</th>
+          <th>Contact Email</th>
+          <th>Status</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="hospitalTable">
+        <!-- Sample Data -->
+        <tr>
+          <td>1</td>
+          <td>City Hospital</td>
+          <td>Mumbai</td>
+          <td>cityhosp@gmail.com</td>
+          <td><span class="badge bg-success">Approved</span></td>
+          <td>777-456-7890</td>
+          <td>
+            <button class="btn btn-sm btn-info" onclick="viewHospital(1, 'City Hospital', 'Mumbai', 'cityhosp@gmail.com', 'Approved', '777-456-7890')">View</button>
+            <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+          </td>
+        </tr>
+        </thead>
+        <tbody id="hospitalTable">
+          <!-- Sample Data -->
+          <tr>
+            <td>2</td>
+            <td>Sushine Hospital</td>
+            <td>Kolkata</td>
+            <td>sunshinehosp@gmail.com</td>
+            <td><span class="badge bg-warning">Pending</span></td>
+            <td>676-000-1111</td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewHospital(2, 'Sushine Hospital', 'Kolkata', 'sunshinehosp@gmail.com', 'Pending', '676-000-1111')">View</button>
+              <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+            </td>
+          </tr>
+        </thead>
+        <tbody id="hospitalTable">
+          <!-- Sample Data -->
+          <tr>
+            <td>3</td>
+            <td>Downtown Hospital</td>
+            <td>Delhi</td>
+            <td>dwontown@gmail.com</td>
+            <td><span class="badge bg-danger">Rejected</span></td>
+            <td>998-456-0101</td>
+            <td>
+              <button class="btn btn-sm btn-info" onclick="viewHospital(3, 'Downtown Hospital', 'Delhi', 'cityhosp@gmail.com', 'Rejected', '998-456-0101')">View</button>
+              <button class="btn btn-sm btn-warning" onclick="editHospital(this)">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteHospital(this)">Delete</button>
+            </td>
+          </tr>
+        <!-- Add more dynamically -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Hospital Modal -->
+<div class="modal fade" id="addHospitalModal" tabindex="-1" aria-labelledby="addHospitalModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="hospitalForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add/Edit Hospital</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">
+            <label>Hospital Name</label>
+            <input type="text" class="form-control" id="hospName" required>
+          </div>
+          <div class="mb-2">
+            <label>City</label>
+            <input type="text" class="form-control" id="hospCity" required>
+          </div>
+          <div class="mb-2">
+            <label>Email</label>
+            <input type="email" class="form-control" id="hospEmail" required>
+          </div>
+          <div class="mb-2">
+            <label>Phone</label>
+            <input type="text" class="form-control" id="hospPhone" required>
+          </div>
+          <div class="mb-2">
+            <label>Status</label>
+            <select class="form-select" id="hospStatus" required>
+              <option>Approved</option>
+              <option>Pending</option>
+              <option>Rejected</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" >Add/Update Hospital</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- View Hospital Modal -->
+<div class="modal fade" id="viewHospitalModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hospital Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="hospitalDetails"></div>
+    </div>
+  </div>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/admin-js/hospitals.js"></script>
+</body>
+</html>

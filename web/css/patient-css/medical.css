@@ -1,0 +1,55 @@
+.card {
+      margin-top: 20px;
+    }
+    .card-header {
+      background-color:  #003366;
+      color: white;
+      font-size: 1.2rem;
+    }
+    .card-body ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card-body li {
+      background-color: #e9ecef;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    h5{
+      margin-top: 4px;
+    }
+    .btn-edit {
+      background-color: #ffc107;
+      color: white;
+      padding: 6px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-edit:hover {
+      background-color: #e0a800;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .btn-danger {
+      margin-left: 6px;
+      background-color: #dc3545;
+      color: white;
+    }
+    .btn-danger:hover {
+      background-color: #bb2d3b;
+    }
+    /* Align forms and buttons correctly */
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .form-container .form-group {
+      flex: 1;
+    }
+    .form-container button {
+      margin-left: 10px;
+    }

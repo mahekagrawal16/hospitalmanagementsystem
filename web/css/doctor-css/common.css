@@ -1,0 +1,49 @@
+ body {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      width: 270px;
+      background-color: #003366;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      color: white;
+    }
+
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+
+    .nav-group {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 20px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #3b72ba;
+    }
+
+    .main-content {
+      margin-left: 270px;
+      padding: 30px;
+      width: 100%;
+      background: #f8f9fa;
+    }
+
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }

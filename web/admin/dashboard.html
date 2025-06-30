@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - DocVisitNow</title>
+  <link rel="shortcut icon" href="../images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/admin-css/common.css"/>
+  <link rel="stylesheet" href="../css/admin-css/dashboard.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar shadow">
+    <h1 class="text-center mb-0 mt-3" style="font-size: 4rem;">📊</h1>
+    <h4 class="text-center mt-2">Admin Panel</h4>
+    
+    <div class="nav-group">
+      <hr>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <hr>
+      <a href="manageusers.html">Manage Users</a>
+      <hr>
+      <a href="managehospitals.html">Manage Hospitals</a>
+      <hr>
+      <a href="appointments.html">View Appointments</a>
+      <hr>
+      <a href="reports.html">System Reports</a>
+      <hr>
+      <a href="settings.html">Settings</a>
+      <hr>
+    </div>
+    <div class="nav-group">
+      <a href="../homepage.html" onclick="confirmLogout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h2>Welcome, Admin 👋</h2>
+    <p>Here’s an overview of system activity and controls.</p>
+
+    <div class="row">
+      <div class="col-md-3 mb-4">
+        <div class="card bg-primary text-white shadow p-3">
+          <h6>Total Users</h6>
+          <h3>1,250</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-success text-white shadow p-3">
+          <h6>Total Appointments</h6>
+          <h3>4,300</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-warning text-dark shadow p-3">
+          <h6>Hospitals Registered</h6>
+          <h3>58</h3>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card bg-danger text-white shadow p-3">
+          <h6>Pending Approvals</h6>
+          <h3>7</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="card shadow p-4 mt-4">
+      <h5>Recent Activity</h5>
+      <ul class="list-group mt-2">
+        <li class="list-group-item">New user registered - Apr 23, 2025</li>
+        <li class="list-group-item">Hospital approved - Apr 22, 2025</li>
+        <li class="list-group-item">Doctor updated profile - Apr 21, 2025</li>
+      </ul>
+    </div>
+  </div>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/admin-js/dashboard.js"></script>
+</body>
+</html>
